@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            /* DARK NIGHT BACKGROUND */
             background: radial-gradient(circle at center, #050a18 0%, #000000 100%);
             margin: 0;
             padding: 0;
@@ -31,23 +30,23 @@
             display: inline-block;
             background-color: #003366;
             color: #e0f7fa;
-            padding: 20px 60px;
+            padding: 15px 50px;
             border-radius: 15px;
             box-shadow: -6px -6px 12px rgba(0, 0, 0, 0.8), 6px 6px 12px rgba(0, 0, 0, 0.8);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .arabic-text {
-            font-size: 75px;
+            font-size: 65px;
             font-weight: bold;
             display: block;
             direction: rtl;
         }
 
-        /* --- BIG Countdown Box --- */
+        /* --- Countdown Box --- */
         .countdown-display {
             background-color: #003366;
-            padding: 60px 40px;
+            padding: 50px 30px;
             border-radius: 20px;
             display: inline-block;
             border: 5px solid #3d2b1f;
@@ -56,26 +55,25 @@
 
         .time-group {
             display: inline-block;
-            margin: 0 45px;
+            margin: 0 35px;
         }
 
         .numbers {
-            font-size: 110px;
+            font-size: 100px;
             font-weight: bold;
             font-family: 'Arial', sans-serif;
             display: block;
             line-height: 1;
-            color: #ffffff; /* Days, Hours, Mins are White */
+            color: #ffffff;
         }
 
-        /* SECONDS ONLY IN RED */
         #seconds {
-            color: #ff3333; /* Bright Red for visibility */
+            color: #ff3333;
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
         .label {
-            font-size: 24px;
+            font-size: 20px;
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -86,8 +84,8 @@
         /* --- White Newborn Moon --- */
         .moon {
             position: absolute;
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             top: 40px;
             right: 60px;
             background-color: transparent;
@@ -97,22 +95,27 @@
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
         }
 
-        /* --- Fixed Logo Position --- */
-        .logo {
+        /* --- 10X SMALLER LOGO --- */
+        .logo-container {
             position: absolute;
-            bottom: 60px;
-            right: 60px;
-            padding: 20px;
+            bottom: 40px;
+            right: 40px;
+            width: 80px; /* Small size to prevent overlap */
+            height: auto;
+            padding: 10px;
             background: #003366;
-            box-shadow: -6px -6px 12px rgba(0, 0, 0, 0.6), 6px 6px 12px rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
+            box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.1);
+            z-index: 20;
         }
 
-        /* --- Enhanced Stars --- */
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .star {
             position: absolute;
             background: white;
@@ -131,9 +134,8 @@
 
 <div class="moon"></div>
 
-<!-- Background Stars Generator (200 stars) -->
 <script>
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 150; i++) {
         let star = document.createElement('div');
         star.className = 'star';
         star.style.top = Math.random() * 100 + 'vh';
@@ -141,8 +143,6 @@
         let size = (Math.random() * 2 + 1) + 'px';
         star.style.width = size;
         star.style.height = size;
-        star.style.animationDelay = Math.random() * 3 + 's';
-        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
         document.body.appendChild(star);
     }
 </script>
@@ -150,7 +150,7 @@
 <div class="container">
     <div class="header-box">
         <span class="arabic-text">اللَّهُمَّ بَلِّغْنَا رَمَضَان</span>
-        <div style="font-size: 28px; margin-top: 10px; letter-spacing: 8px; font-weight: bold;">RAMADAN 2026</div>
+        <div style="font-size: 24px; margin-top: 10px; letter-spacing: 8px; font-weight: bold;">RAMADAN 2026</div>
     </div>
 
     <div class="clock-container">
@@ -175,13 +175,12 @@
     </div>
 </div>
 
-    <div class="logo">
-    <img src="logo.png" alt="Bay County Islamic Society Logo" style="width: 100%; height: auto; display: block;">
+<!-- Logo Area with scaled image -->
+<div class="logo-container">
+    <img src="logo.png" alt="Logo">
 </div>
 
-
 <script>
-    // Countdown to expected start of Ramadan 2026
     const ramadanDate = new Date("February 18, 2026 00:00:00").getTime();
 
     function updateTimer() {
@@ -189,7 +188,7 @@
         const diff = ramadanDate - now;
 
         if (diff < 0) {
-            document.querySelector(".countdown-display").innerHTML = "<h1 style='color:white; font-size:80px;'>RAMADAN MUBARAK</h1>";
+            document.querySelector(".countdown-display").innerHTML = "<h1 style='color:white; font-size:60px;'>RAMADAN MUBARAK</h1>";
             return;
         }
 
@@ -210,4 +209,3 @@
 
 </body>
 </html>
-
