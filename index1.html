@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan 2026 Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            /* DARK NIGHT BACKGROUND */
+            background: radial-gradient(circle at center, #050a18 0%, #000000 100%);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* --- Container moved LOWER --- */
+        .container {
+            position: absolute;
+            top: 52%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            z-index: 10;
+        }
+
+        .header-box {
+            display: inline-block;
+            background-color: #003366;
+            color: #e0f7fa;
+            padding: 20px 60px;
+            border-radius: 15px;
+            box-shadow: -6px -6px 12px rgba(0, 0, 0, 0.8), 6px 6px 12px rgba(0, 0, 0, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .arabic-text {
+            font-size: 75px;
+            font-weight: bold;
+            display: block;
+            direction: rtl;
+        }
+
+        /* --- BIG Countdown Box --- */
+        .countdown-display {
+            background-color: #003366;
+            padding: 60px 40px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 5px solid #3d2b1f;
+            box-shadow: -10px -10px 20px rgba(0, 0, 0, 1), 10px 10px 20px rgba(0, 0, 0, 1);
+        }
+
+        .time-group {
+            display: inline-block;
+            margin: 0 45px;
+        }
+
+        .numbers {
+            font-size: 110px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            display: block;
+            line-height: 1;
+            color: #ffffff; /* Days, Hours, Mins are White */
+        }
+
+        /* SECONDS ONLY IN RED */
+        #seconds {
+            color: #ff3333; /* Bright Red for visibility */
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .label {
+            font-size: 24px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* --- White Newborn Moon --- */
+        .moon {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            top: 40px;
+            right: 60px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: -15px 10px 0 0 #ffffff;
+            transform: rotate(-15deg);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+        }
+
+        /* --- Fixed Logo Position --- */
+        .logo {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            padding: 20px;
+            background: #003366;
+            box-shadow: -6px -6px 12px rgba(0, 0, 0, 0.6), 6px 6px 12px rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- Enhanced Stars --- */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.3; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="moon"></div>
+
+<!-- Background Stars Generator (200 stars) -->
+<script>
+    for (let i = 0; i < 200; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        let size = (Math.random() * 2 + 1) + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        document.body.appendChild(star);
+    }
+</script>
+
+<div class="container">
+    <div class="header-box">
+        <span class="arabic-text">اللَّهُمَّ بَلِّغْنَا رَمَضَان</span>
+        <div style="font-size: 28px; margin-top: 10px; letter-spacing: 8px; font-weight: bold;">RAMADAN 2026</div>
+    </div>
+
+    <div class="clock-container">
+        <div class="countdown-display">
+            <div class="time-group">
+                <span class="numbers" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-group">
+                <span class="numbers" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-group">
+                <span class="numbers" id="minutes">00</span>
+                <span class="label">Min</span>
+            </div>
+            <div class="time-group">
+                <span class="numbers" id="seconds">00</span>
+                <span class="label">Sec</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="logo">
+    BAY COUNTY<br>ISLAMIC SOCIETY
+</div>
+
+<script>
+    // Countdown to expected start of Ramadan 2026
+    const ramadanDate = new Date("February 18, 2026 00:00:00").getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const diff = ramadanDate - now;
+
+        if (diff < 0) {
+            document.querySelector(".countdown-display").innerHTML = "<h1 style='color:white; font-size:80px;'>RAMADAN MUBARAK</h1>";
+            return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+        document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+        document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+        document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+</script>
+
+</body>
+</html>
