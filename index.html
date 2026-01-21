@@ -96,18 +96,30 @@
         }
 
         /* --- 10X SMALLER LOGO --- */
-        .logo-container {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            width: 80px; /* Small size to prevent overlap */
-            height: auto;
-            padding: 10px;
-            background: #003366;
-            box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            z-index: 20;
+       <style>
+  /* This CSS forces the logo to stay small */
+  .logo-container {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      width: 50px; /* Reduced to 50px for "10 times smaller" effect */
+      height: auto;
+      z-index: 20;
+      background: #003366;
+      padding: 5px;
+      border-radius: 8px;
+  }
+  .logo-container img {
+      width: 100% !important; /* Force the huge image to fit the 50px box */
+      height: auto !important;
+      display: block;
+  }
+</style>
+
+<div class="logo-container">
+    <img src="logo.png" alt="Logo">
+</div>
+
         }
 
         .logo-container img {
@@ -209,3 +221,4 @@
 
 </body>
 </html>
+
